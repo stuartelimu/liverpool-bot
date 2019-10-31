@@ -119,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CONSUMER_KEY = config('CONSUMER_KEY')
+CONSUMER_SECRET = config('CONSUMER_SECRET')
+ACCESS_TOKEN = config('ACCESS_TOKEN')
+ACCESS_SECRET = config('ACCESS_SECRET')
+
