@@ -115,7 +115,6 @@ def main():
                 api.update_status(status)
             else:
                 print(st)
-                api.update_status(st)
         except tweepy.TweepError as e:
             print(e.reason)
 
