@@ -1,9 +1,12 @@
+import os
+import django
 from django.conf import settings
 from bs4 import BeautifulSoup
 import requests
 import time
 import tweepy
-import credentials
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'bot.settings'
 
 url = 'https://www.sportinglife.com'
 
@@ -56,9 +59,11 @@ def scrape_team(team):
                 return tt
 
             else:
-                return f'{team_a} v {team_b} \n match has not started'
+                return f'{team_a} v {team_b} \nMatch has not started'
         else:
             pass
+
+    return "There are no games today"
         
                 
 
