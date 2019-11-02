@@ -101,10 +101,9 @@ def scrape_commentary(link):
 def main():
 
     api = create_api()
-    st = scrape_team("Liverpool")
     
     while True:
-        
+        st = scrape_team("Liverpool")
         try:
             if st.startswith('https://'):
                 score = st.split(', ')[1]
