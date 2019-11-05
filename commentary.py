@@ -92,8 +92,11 @@ def scrape_commentary(link):
         # FT
         break_ = event.find('div', class_='type-col').span.text
         match_time = ''
+
+    if break_ == 'Goal':
+        break_ = '⚽'
         
-    com = f'{match_time} | {break_} | {detail}' 
+    com = f'{match_time}  {break_} | {detail}' 
 
     # events.append(ccmm)
     return com
@@ -109,7 +112,7 @@ def main():
                 score = st.split(', ')[1]
                 commentary_link = st.split(', ')[0]
                 commentary = scrape_commentary(commentary_link)
-                status = f"{score} \n{commentary}"
+                status = f"{score} \n\n{commentary}"
                 # print(status)
                 api.update_status(status)
             else:
@@ -117,7 +120,7 @@ def main():
         except tweepy.TweepError as e:
             print(e.reason)
 
-        time.sleep(60)
+        time.sleep(30)
 
 if __name__ == "__main__":  
     main()
