@@ -53,5 +53,40 @@ def scrape_the_athletic():
 
         yield f'{text} {link}'
 
+def scrape_liverpool_echo():
 
-scrape_the_athletic()
+    r = requests.get('https://www.liverpoolecho.co.uk/all-about/liverpool-fc', headers=HEADERS).text
+    soup = BeautifulSoup(r, 'lxml')
+
+    articles = soup.find(attrs={"data-group": "topStories", "data-group-index": 1})
+
+    latest_articles = articles.find_all('div', class_='teaser')
+
+    latest_article_links =  [latest_article.a['href'] for latest_article in latest_articles]
+
+    for link in latest_article_links:
+        r = requests.get(link, headers=HEADERS).text
+        soup = BeautifulSoup(r, 'lxml')   
+
+        paras_body = soup.find('div', class_='article-body')
+
+        paras = paras_body.find_all('p')
+
+        paras_text = [para.text for para in paras if para.text]
+
+        para = random.choice(paras_text)
+
+        para_tokenized = tokenizer.tokenize(para)
+
+        text = extract_text(para_tokenized)
+
+        if not text:
+            continue
+
+        yield f'{text} {link}'
+
+
+
+
+
+scrape_liverpool_echo()
