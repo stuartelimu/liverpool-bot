@@ -105,7 +105,7 @@ def main():
                 tweet = next(iterator)
                 api.update_status(tweet)
                 print(tweet, end='\n\n')
-                time.sleep(60)  
+                time.sleep(1800)  
             except StopIteration:
                 news_iterators[i] = globals()[newsfuncs[i]]()
             except tweepy.TweepError as e:
@@ -113,4 +113,3 @@ def main():
 
 if __name__ == "__main__":  
     main()
-# scrape_liverpool_echo()
