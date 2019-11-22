@@ -5,6 +5,9 @@ import nltk
 import requests
 from bs4 import BeautifulSoup
 
+import tweepy
+from commentary import create_api
+
 url = 'https://theathletic.com'
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
@@ -86,7 +89,28 @@ def scrape_liverpool_echo():
         yield f'{text} {link}'
 
 
+def main():
+    """Encompasses the main loop of the bot."""
 
+    api = create_api()
 
+    print('---Bot started---\n')
+    news_funcs = ['scrape_the_athletic', 'scrape_liverpool_echo']
+    news_iterators = []  
+    for func in news_funcs:
+        news_iterators.append(globals()[func]())
+    while True:
+        for i, iterator in enumerate(news_iterators):
+            try:
+                tweet = next(iterator)
+                api.update_status(tweet)
+                print(tweet, end='\n\n')
+                time.sleep(60)  
+            except StopIteration:
+                news_iterators[i] = globals()[newsfuncs[i]]()
+            except tweepy.TweepError as e:
+                print(e.reason)
 
-scrape_liverpool_echo()
+if __name__ == "__main__":  
+    main()
+# scrape_liverpool_echo()
