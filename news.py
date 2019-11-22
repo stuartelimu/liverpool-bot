@@ -2,6 +2,7 @@ import random
 import time
 
 import nltk
+nltk.download('punkt')
 import requests
 from bs4 import BeautifulSoup
 
