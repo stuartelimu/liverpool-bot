@@ -2,7 +2,7 @@ import random
 import time
 
 import nltk
-nltk.path.append(settings.NLTK_DATA)
+nltk.data.path.append(settings.NLTK_DATA)
 import requests
 from bs4 import BeautifulSoup
 
