@@ -1,6 +1,8 @@
 import random
 import time
 
+from django.conf import settings
+
 import nltk
 nltk.data.path.append(settings.NLTK_DATA)
 import requests
@@ -9,7 +11,6 @@ from bs4 import BeautifulSoup
 import tweepy
 from commentary import create_api
 
-from django.conf import settings
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'bot.settings'
 
