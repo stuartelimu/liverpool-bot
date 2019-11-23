@@ -2,12 +2,14 @@ import random
 import time
 
 import nltk
-nltk.download('punkt')
+nltk.path.append(settings.NLTK_DATA)
 import requests
 from bs4 import BeautifulSoup
 
 import tweepy
 from commentary import create_api
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'bot.settings'
 
 url = 'https://theathletic.com'
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')

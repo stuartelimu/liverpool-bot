@@ -126,4 +126,6 @@ CONSUMER_SECRET = config('CONSUMER_SECRET')
 ACCESS_TOKEN = config('ACCESS_TOKEN')
 ACCESS_SECRET = config('ACCESS_SECRET')
 
+NLTK_DATA = os.path.join(BASE_DIR, 'nltk_data')
+
 django_heroku.settings(locals())
