@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup
 import tweepy
 from commentary import create_api
 
+from django.conf import settings
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'bot.settings'
 
 url = 'https://theathletic.com'
