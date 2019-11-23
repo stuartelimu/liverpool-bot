@@ -10,6 +10,8 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'bot.settings'
 
 url = 'https://www.sportinglife.com'
 
+NLTK_DATA_PATH = settings.NLTK_DATA
+
 def create_api():
     consumer_key = settings.CONSUMER_KEY
     consumer_secret = settings.CONSUMER_SECRET

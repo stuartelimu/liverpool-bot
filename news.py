@@ -1,18 +1,14 @@
 import random
 import time
 
-from django.conf import settings
+from commentary import create_api, NLTK_DATA_PATH
 
 import nltk
-nltk.data.path.append(settings.NLTK_DATA)
+nltk.data.path.append(NLTK_DATA_PATH)
 import requests
 from bs4 import BeautifulSoup
 
 import tweepy
-from commentary import create_api
-
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'bot.settings'
 
 url = 'https://theathletic.com'
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
