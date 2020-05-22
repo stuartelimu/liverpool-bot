@@ -4,4 +4,5 @@ A match commentary and news bot for Liverpool F
 
 ## Features
 Commentary of all liverpool games
-C
+
+check it out at @kospionC
